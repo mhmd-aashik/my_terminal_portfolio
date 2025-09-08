@@ -70,6 +70,18 @@ export const Terminal: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    // Focus on input after loading screen completes
+    if (!showLoading && inputRef.current) {
+      // Small delay to ensure the terminal is fully rendered
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      }, 100);
+    }
+  }, [showLoading]);
+
+  useEffect(() => {
     // Focus on input after commands are executed
     if (inputRef.current && !isTyping) {
       inputRef.current.focus();
