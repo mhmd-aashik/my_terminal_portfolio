@@ -20,7 +20,7 @@ import { AutoComplete } from "./AutoComplete";
 import { LoadingScreen } from "./LoadingScreen";
 import { TypingEffect } from "./TypingEffect";
 import { useSound } from "@/hooks/useSound";
-import { ResumeDialog } from "../components/ResumeDialog";
+import { ResumeDialog } from "./ResumeDialog";
 
 export interface Command {
   id: string;
@@ -195,7 +195,7 @@ export const Terminal: React.FC = () => {
               </div>
 
               {/* About Text */}
-              <div className="w-full max-w-2xl text-center text-justify">
+              <div className="w-full max-w-2xl text-center">
                 <TypingEffect
                   text={aboutText}
                   speed={30}
@@ -481,7 +481,7 @@ export const Terminal: React.FC = () => {
             <div className="text-gray-300">
               <ResumeDialog>
                 <span className="link-hover text-xl cursor-pointer">
-                  📄 Download Resume
+                  📄 Download CV
                 </span>
               </ResumeDialog>
             </div>

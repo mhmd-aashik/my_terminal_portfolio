@@ -318,7 +318,7 @@ export const contactInfo: ContactInfo = {
 
 export const aboutText = `
 Welcome to my ZSH Terminal portfolio! I'm Mohammed Aashik, a full-stack developer, desktop app developer, 
-and DevOps engineer with 6+ years of experience building scalable web and mobile applications.
+and DevOps engineer with 5+ years of experience building scalable web and mobile applications.
 
 I specialize in modern frameworks like React, Next.js, NestJS, and Flutter, with strong expertise in 
 databases (MongoDB, PostgreSQL, MySQL) and cloud platforms (AWS, Azure, Vercel). I enjoy working 
@@ -340,7 +340,7 @@ export const helpCommands = [
   { command: "projects", description: "List my featured projects" },
   { command: "experience", description: "Show my work experience" },
   { command: "contact", description: "Get in touch with me" },
-  { command: "resume", description: "Download my resume" },
+  { command: "resume", description: "Download my CV" },
   { command: "clear", description: "Clear the terminal screen" },
   { command: "whoami", description: "Display current user information" },
   { command: "date", description: "Show current date and time" },
