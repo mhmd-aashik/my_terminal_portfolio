@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import {
   projects,
   skills,
@@ -71,6 +72,12 @@ export const Terminal: React.FC = () => {
     }
   }, [commands]);
 
+  const scrollToBottom = () => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  };
+
   const executeCommand = async (input: string) => {
     const trimmedInput = input.trim().toLowerCase();
 
@@ -130,13 +137,33 @@ export const Terminal: React.FC = () => {
       case "about":
         output = (
           <div className="command-output">
-            <TypingEffect
-              text={aboutText}
-              speed={30}
-              className="whitespace-pre-line text-gray-300 leading-relaxed text-base sm:text-lg"
-              playSound={soundEnabled ? playTypewriterSound : undefined}
-              playBellSound={soundEnabled ? playTypewriterBell : undefined}
-            />
+            <div className="flex flex-col gap-6 items-center">
+              {/* Profile Image */}
+              <div className="flex-shrink-0">
+                <div className="w-48 h-48 rounded-full overflow-hidden border-2 border-green-400/30 shadow-lg relative">
+                  <Image
+                    src="/assets/images/profile.jpg"
+                    alt="Profile Picture"
+                    width={192}
+                    height={192}
+                    className="w-full h-full object-cover"
+                    priority
+                  />
+                </div>
+              </div>
+
+              {/* About Text */}
+              <div className="w-full max-w-2xl text-center">
+                <TypingEffect
+                  text={aboutText}
+                  speed={30}
+                  onUpdate={scrollToBottom}
+                  className="whitespace-pre-line text-gray-300 leading-relaxed text-base sm:text-lg"
+                  playSound={soundEnabled ? playTypewriterSound : undefined}
+                  playBellSound={soundEnabled ? playTypewriterBell : undefined}
+                />
+              </div>
+            </div>
           </div>
         );
         break;

@@ -7,6 +7,7 @@ interface TypingEffectProps {
   text: string;
   speed?: number;
   onComplete?: () => void;
+  onUpdate?: () => void;
   className?: string;
   showCursor?: boolean;
   playSound?: () => void;
@@ -17,6 +18,7 @@ export const TypingEffect: React.FC<TypingEffectProps> = ({
   text,
   speed = 50,
   onComplete,
+  onUpdate,
   className = "",
   showCursor = true,
   playSound,
@@ -31,6 +33,9 @@ export const TypingEffect: React.FC<TypingEffectProps> = ({
       const timeout = setTimeout(() => {
         setDisplayedText((prev) => prev + text[currentIndex]);
         setCurrentIndex((prev) => prev + 1);
+
+        // Call onUpdate callback to trigger auto-scroll
+        onUpdate?.();
 
         // Play typewriter sound for each character (except spaces)
         if (text[currentIndex] !== " " && playSound) {
@@ -53,6 +58,7 @@ export const TypingEffect: React.FC<TypingEffectProps> = ({
     text,
     speed,
     onComplete,
+    onUpdate,
     isTyping,
     playSound,
     playBellSound,
