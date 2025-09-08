@@ -1,36 +1,151 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Terminal Portfolio
 
-## Getting Started
+A modern, interactive terminal-style developer portfolio built with Next.js 14, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
+
+- **Interactive Terminal Interface**: Type commands to explore different sections
+- **Responsive Design**: Works perfectly on desktop and mobile devices
+- **Smooth Animations**: Powered by Framer Motion for engaging user experience
+- **Command System**: Full command-line interface with history and auto-completion
+- **Modern UI**: Glassmorphism effects and neon terminal styling
+- **TypeScript**: Fully typed for better development experience
+
+## 🎯 Available Commands
+
+- `help` - Show available commands
+- `about` - Display personal information
+- `skills` - Show technical skills
+- `projects` - List featured projects
+- `contact` - Get in touch information
+- `resume` - Download resume
+- `whoami` - Display current user info
+- `date` - Show current date and time
+- `ls` - List available commands
+- `clear` - Clear terminal screen
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+
+## 🚀 Getting Started
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd terminal-portfolio
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── globals.css          # Global styles and terminal theme
+│   ├── layout.tsx           # Root layout component
+│   └── page.tsx             # Main page component
+├── components/
+│   ├── ui/                  # shadcn/ui components
+│   ├── Terminal.tsx         # Main terminal component
+│   ├── TerminalHeader.tsx   # Terminal window header
+│   ├── CommandLine.tsx      # Command input line
+│   ├── CommandOutput.tsx    # Command output wrapper
+│   ├── BlinkingCursor.tsx   # Animated cursor
+│   ├── TypingAnimation.tsx  # Typing animation component
+│   └── ResumeDialog.tsx     # Resume download dialog
+└── data/
+    └── portfolio.ts         # Portfolio data and content
+```
 
-## Learn More
+## 🎨 Customization
 
-To learn more about Next.js, take a look at the following resources:
+### Updating Portfolio Content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Edit `src/data/portfolio.ts` to customize:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Personal information and bio
+- Skills and technologies
+- Projects and their details
+- Contact information
+- Available commands
 
-## Deploy on Vercel
+### Styling
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The terminal theme is defined in `src/app/globals.css`. Key classes:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `.terminal-bg` - Background gradient
+- `.terminal-window` - Main terminal container
+- `.terminal-header` - Terminal window header
+- `.terminal-cursor` - Blinking cursor animation
+- `.command-line` - Command input styling
+- `.command-output` - Command output styling
+
+### Adding New Commands
+
+1. Add the command to `helpCommands` in `portfolio.ts`
+2. Add a case in the `executeCommand` function in `Terminal.tsx`
+3. Implement the command logic and output
+
+## 🚀 Deployment
+
+This project is optimized for deployment on Vercel:
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy with zero configuration
+
+## 📱 Responsive Design
+
+The terminal is fully responsive and adapts to different screen sizes:
+
+- Mobile: Optimized touch interface
+- Tablet: Balanced layout
+- Desktop: Full terminal experience
+
+## 🎯 Keyboard Shortcuts
+
+- `Enter` - Execute command
+- `↑/↓` - Navigate command history
+- `Tab` - Auto-complete commands
+- `Ctrl+L` - Clear terminal (browser default)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🙏 Acknowledgments
+
+- Inspired by terminal interfaces and developer tools
+- Built with modern web technologies
+- Designed for developer portfolios
+
+---
+
+**Happy coding!** 🚀
