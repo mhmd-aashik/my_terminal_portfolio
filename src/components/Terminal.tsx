@@ -42,6 +42,9 @@ export const Terminal: React.FC = () => {
     left: 0,
   });
   const [soundEnabled, setSoundEnabled] = useState(true);
+  const [minimizedCommands, setMinimizedCommands] = useState<Set<string>>(
+    new Set()
+  );
 
   const terminalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -83,6 +86,18 @@ export const Terminal: React.FC = () => {
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
+  };
+
+  const toggleCommandMinimize = (commandId: string) => {
+    setMinimizedCommands((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(commandId)) {
+        newSet.delete(commandId);
+      } else {
+        newSet.add(commandId);
+      }
+      return newSet;
+    });
   };
 
   const executeCommand = async (input: string) => {
@@ -531,26 +546,47 @@ export const Terminal: React.FC = () => {
             )}
           </AnimatePresence>
 
-          {commands.map((command) => (
-            <motion.div
-              key={command.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="mb-4"
-            >
-              <CommandLine input={command.input} />
-              {command.output && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                  className="mt-2"
-                >
-                  <CommandOutput>{command.output}</CommandOutput>
-                </motion.div>
-              )}
-            </motion.div>
-          ))}
+          {commands.map((command) => {
+            const isMinimized = minimizedCommands.has(command.id);
+            return (
+              <motion.div
+                key={command.id}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="mb-4"
+              >
+                <div className="flex items-center gap-2">
+                  <CommandLine input={command.input} />
+                  {command.output && (
+                    <button
+                      onClick={() => {
+                        toggleCommandMinimize(command.id);
+                        if (soundEnabled) playClickSound();
+                      }}
+                      className="text-gray-400 hover:text-green-400 transition-colors text-sm px-2 py-1 rounded border border-gray-600 hover:border-green-400/50"
+                      title={isMinimized ? "Expand output" : "Minimize output"}
+                    >
+                      {isMinimized ? "⊞" : "⊟"}
+                    </button>
+                  )}
+                </div>
+                {command.output && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{
+                      opacity: isMinimized ? 0 : 1,
+                      y: isMinimized ? -10 : 0,
+                      height: isMinimized ? 0 : "auto",
+                    }}
+                    transition={{ delay: 0.1, duration: 0.3 }}
+                    className={`mt-2 overflow-hidden ${isMinimized ? "pointer-events-none" : ""}`}
+                  >
+                    <CommandOutput>{command.output}</CommandOutput>
+                  </motion.div>
+                )}
+              </motion.div>
+            );
+          })}
 
           <div className="flex items-center relative" ref={inputContainerRef}>
             <span className="text-green-400 mr-2">$</span>
