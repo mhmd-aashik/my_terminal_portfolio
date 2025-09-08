@@ -66,6 +66,13 @@ export const Terminal: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    // Focus on input after commands are executed
+    if (inputRef.current && !isTyping) {
+      inputRef.current.focus();
+    }
+  }, [commands, isTyping]);
+
+  useEffect(() => {
     // Auto-scroll to bottom when new commands are added
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
@@ -158,6 +165,12 @@ export const Terminal: React.FC = () => {
                   text={aboutText}
                   speed={30}
                   onUpdate={scrollToBottom}
+                  onComplete={() => {
+                    // Focus input after typing effect completes
+                    if (inputRef.current) {
+                      inputRef.current.focus();
+                    }
+                  }}
                   className="whitespace-pre-line text-gray-300 leading-relaxed text-base sm:text-lg"
                   playSound={soundEnabled ? playTypewriterSound : undefined}
                   playBellSound={soundEnabled ? playTypewriterBell : undefined}
@@ -480,6 +493,12 @@ export const Terminal: React.FC = () => {
         <div
           ref={terminalRef}
           className="flex-1 p-3 sm:p-6 overflow-y-auto font-mono text-sm sm:text-base"
+          onClick={() => {
+            // Focus input when clicking anywhere in the terminal
+            if (inputRef.current) {
+              inputRef.current.focus();
+            }
+          }}
         >
           <AnimatePresence>
             {showWelcome && (
