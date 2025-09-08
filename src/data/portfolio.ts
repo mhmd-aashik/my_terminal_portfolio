@@ -20,6 +20,18 @@ export interface ContactInfo {
   twitter?: string;
 }
 
+export interface WorkExperience {
+  id: string;
+  company: string;
+  position: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  description: string[];
+  technologies: string[];
+  current?: boolean;
+}
+
 export const projects: Project[] = [
   {
     id: "ecommerce-platform",
@@ -71,41 +83,229 @@ export const projects: Project[] = [
 export const skills: Skill[] = [
   {
     category: "Languages",
-    items: ["TypeScript", "JavaScript", "Python", "Go", "Java", "C++"],
+    items: ["Java", "JavaScript", "TypeScript", "Python", "Dart", "C++"],
   },
   {
     category: "Frontend",
     items: [
+      "HTML/CSS",
       "React",
       "Next.js",
       "Vue.js",
+      "Bootstrap",
       "Tailwind CSS",
       "Framer Motion",
+      "Material-UI",
+      "Sass/SCSS",
+      "styled-components",
       "Three.js",
+      "Webpack",
     ],
   },
   {
     category: "Backend",
     items: [
       "Node.js",
-      "Express.js",
-      "FastAPI",
       "NestJS",
+      "Express.js",
+      "HonoJS",
       "GraphQL",
       "REST APIs",
+      "gRPC",
+      "Socket.IO",
     ],
   },
   {
-    category: "Databases",
-    items: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Prisma", "TypeORM"],
+    category: "Databases & ORMs",
+    items: [
+      "PostgreSQL",
+      "MongoDB",
+      "MySQL",
+      "SQL",
+      "Redis",
+      "Convex",
+      "Prisma",
+      "Mongoose",
+      "Drizzle",
+      "TypeORM",
+    ],
   },
   {
     category: "DevOps & Tools",
-    items: ["Docker", "Kubernetes", "AWS", "Vercel", "Git", "CI/CD", "Linux"],
+    items: [
+      "Linux",
+      "Shell Scripting",
+      "Docker",
+      "Kubernetes",
+      "Jenkins",
+      "Ansible",
+      "CI/CD Pipelines",
+      "Git",
+      "GitHub Actions",
+      "Postman",
+      "Insomnia",
+      "Clerk",
+      "Auth.js",
+      "Lucia Auth",
+      "Plaid",
+    ],
   },
   {
-    category: "Mobile",
-    items: ["React Native", "Flutter", "Expo", "iOS", "Android"],
+    category: "Cloud & Servers",
+    items: [
+      "Vercel",
+      "Heroku",
+      "Netlify",
+      "Azure",
+      "AWS",
+      "Cloudflare",
+      "OpenShift",
+    ],
+  },
+  {
+    category: "Mobile & Desktop",
+    items: [
+      "React Native",
+      "Flutter",
+      "Expo",
+      "Lynx",
+      "iOS",
+      "Android",
+      "ElectronJS",
+    ],
+  },
+  {
+    category: "State Management",
+    items: ["Redux", "Zustand", "Recoil"],
+  },
+  {
+    category: "Testing",
+    items: ["React Testing Library", "Vitest"],
+  },
+  {
+    category: "Design & Tools",
+    items: ["Figma", "Canva", "Photoshop", "Adobe XD"],
+  },
+  {
+    category: "Other",
+    items: [
+      "DSA",
+      "OOP",
+      "Internationalization (i18n)",
+      "Stripe",
+      "Lemon Squeezy",
+      "AI",
+      "ChatGPT",
+    ],
+  },
+  {
+    category: "Languages (Human)",
+    items: ["English", "Sinhala", "Tamil"],
+  },
+];
+
+export const workExperience: WorkExperience[] = [
+  {
+    id: "software-engineer-pelican",
+    company: "Pelican Cube (PVT) LTD",
+    position: "Software Engineer",
+    location: "Sri Lanka",
+    startDate: "Jan 2025",
+    endDate: "Present",
+    current: true,
+    description: [
+      "Developed and maintained enterprise-grade web applications.",
+      "Optimized applications for performance, scalability, and security.",
+      "Collaborated with cross-functional teams to deliver robust solutions.",
+    ],
+    technologies: [
+      "Next.js",
+      "React",
+      "Flutter",
+      "NestJS",
+      "Express.js",
+      "AWS",
+    ],
+  },
+  {
+    id: "fullstack-inventurix",
+    company: "InventuriX Technologies",
+    position: "Full Stack Developer",
+    location: "Sri Lanka",
+    startDate: "May 2024",
+    endDate: "Dec 2024",
+    description: [
+      "Led the design and development of scalable web applications using Next.js, Node.js, and Express.js.",
+      "Architected cloud-based solutions on Microsoft Azure for scalability, security, and cost-effectiveness.",
+      "Integrated CI/CD pipelines to streamline deployments and improve developer productivity.",
+    ],
+    technologies: [
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "TypeScript",
+      "Azure",
+      "Vercel",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    id: "associate-rangha",
+    company: "Rangha Technologies",
+    position: "Associate Full Stack Developer",
+    location: "Sri Lanka",
+    startDate: "Jan 2024",
+    endDate: "Mar 2025",
+    description: [
+      "Developed and maintained web applications using React, Next.js, and Node.js.",
+      "Optimized applications for maximum speed and scalability.",
+      "Contributed to both frontend and backend development for production-grade projects.",
+    ],
+    technologies: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "MongoDB",
+      "TypeScript",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    id: "teaching-assistant-udemy",
+    company: "Udemy",
+    position: "Teaching Assistant",
+    location: "Remote",
+    startDate: "Mar 2023",
+    endDate: "Mar 2024",
+    description: [
+      "Assisted students with debugging techniques and resolving software issues efficiently.",
+      "Provided technical guidance on full-stack development concepts and best practices.",
+      "Supported large-scale online learning communities to enhance developer growth.",
+    ],
+    technologies: [
+      "Next.js",
+      "React",
+      "Redux",
+      "Prisma ORM",
+      "Clerk",
+      "MySQL",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    id: "mentor-ztfsh",
+    company: "Zero to Full Stack Hero",
+    position: "Mentor",
+    location: "Remote",
+    startDate: "Mar 2020",
+    endDate: "Present",
+    current: true,
+    description: [
+      "Mentored aspiring developers through structured project-based learning.",
+      "Guided mentees in mastering modern full-stack technologies.",
+      "Provided career and technical coaching to help learners achieve professional goals.",
+    ],
+    technologies: ["React", "Next.js", "Node.js", "MongoDB", "TypeScript"],
   },
 ];
 
@@ -117,18 +317,20 @@ export const contactInfo: ContactInfo = {
 };
 
 export const aboutText = `
-Welcome to my terminal portfolio! I'm a passionate full-stack developer with 5+ years of experience 
-building scalable web applications and innovative software solutions.
+Welcome to my terminal portfolio! I'm Mohammed Aashik, a full-stack developer, desktop app developer, 
+and DevOps engineer with 6+ years of experience building scalable web and mobile applications.
 
-I specialize in modern web technologies and have a strong background in both frontend and backend 
-development. My expertise includes creating responsive user interfaces, designing robust APIs, 
-and implementing efficient database solutions.
+I specialize in modern frameworks like React, Next.js, NestJS, and Flutter, with strong expertise in 
+databases (MongoDB, PostgreSQL, MySQL) and cloud platforms (AWS, Azure, Vercel). I enjoy working 
+across the stack — from creating elegant, responsive user interfaces to designing efficient APIs 
+and deploying robust solutions with CI/CD pipelines.
 
-When I'm not coding, you can find me contributing to open-source projects, writing technical 
-blogs, or exploring the latest trends in software development. I'm always eager to learn new 
-technologies and take on challenging projects that push the boundaries of what's possible.
+Beyond coding, I’ve mentored aspiring developers, contributed to open-source projects, and 
+collaborated on enterprise-grade platforms that emphasize performance, security, and user experience. 
+I’m passionate about solving complex problems, exploring new technologies, and building innovative 
+products that make an impact.
 
-Let's connect and build something amazing together!
+Let’s connect and create something extraordinary together!
 `;
 
 export const helpCommands = [
@@ -136,6 +338,7 @@ export const helpCommands = [
   { command: "about", description: "Display information about me" },
   { command: "skills", description: "Show my technical skills" },
   { command: "projects", description: "List my featured projects" },
+  { command: "experience", description: "Show my work experience" },
   { command: "contact", description: "Get in touch with me" },
   { command: "resume", description: "Download my resume" },
   { command: "clear", description: "Clear the terminal screen" },

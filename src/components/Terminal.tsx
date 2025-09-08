@@ -9,6 +9,7 @@ import {
   contactInfo,
   aboutText,
   helpCommands,
+  workExperience,
 } from "@/data/portfolio";
 import { BlinkingCursor } from "./BlinkingCursor";
 import { CommandLine } from "./CommandLine";
@@ -164,18 +165,18 @@ export const Terminal: React.FC = () => {
               <div className="flex-shrink-0">
                 <div className="w-48 h-48 rounded-full overflow-hidden border-2 border-green-400/30 shadow-lg relative">
                   <Image
-                    src="/assets/images/profile.jpg"
+                    src="/assets/images/pic.jpeg"
                     alt="Profile Picture"
                     width={192}
                     height={192}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                     priority
                   />
                 </div>
               </div>
 
               {/* About Text */}
-              <div className="w-full max-w-2xl text-center">
+              <div className="w-full max-w-2xl text-center text-justify">
                 <TypingEffect
                   text={aboutText}
                   speed={30}
@@ -266,6 +267,66 @@ export const Terminal: React.FC = () => {
                       Live Demo
                     </a>
                   )}
+                </div>
+              </div>
+            ))}
+          </div>
+        );
+        break;
+
+      case "experience":
+        output = (
+          <div className="command-output space-y-6">
+            {workExperience.map((job) => (
+              <div key={job.id} className="border-l-2 border-green-400 pl-4">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                  <div>
+                    <div className="text-green-400 font-semibold text-xl">
+                      {job.position}
+                    </div>
+                    <div className="text-cyan-400 text-lg font-medium">
+                      {job.company}
+                    </div>
+                  </div>
+                  <div className="text-gray-400 text-sm mt-1 sm:mt-0">
+                    {job.startDate} - {job.endDate}
+                    {job.current && (
+                      <span className="text-green-400 ml-2 font-semibold">
+                        • Current
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div className="text-gray-300 text-sm mb-3">
+                  📍 {job.location}
+                </div>
+                <div className="text-gray-300 mb-4">
+                  <div className="text-cyan-400 font-semibold mb-2 text-base">
+                    Key Responsibilities:
+                  </div>
+                  <ul className="space-y-1 text-sm">
+                    {job.description.map((desc, index) => (
+                      <li key={index} className="flex items-start">
+                        <span className="text-green-400 mr-2 mt-1">•</span>
+                        <span>{desc}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="text-gray-400 text-sm">
+                  <span className="text-cyan-400 font-semibold">
+                    Technologies:
+                  </span>{" "}
+                  <div className="flex flex-wrap gap-1 mt-1">
+                    {job.technologies.map((tech, index) => (
+                      <span
+                        key={index}
+                        className="bg-gray-800 px-2 py-1 rounded text-xs border border-gray-700 hover:border-green-400/50 transition-colors"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}

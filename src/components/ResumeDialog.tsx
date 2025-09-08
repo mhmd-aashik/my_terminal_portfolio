@@ -19,7 +19,7 @@ export const ResumeDialog: React.FC<ResumeDialogProps> = ({ children }) => {
     // For now, we'll create a simple text-based resume
     // In a real application, you would link to an actual PDF file
     const resumeContent = `
-ASHIK'S RESUME
+AASHIK'S RESUME
 ==============
 
 FULL-STACK DEVELOPER
