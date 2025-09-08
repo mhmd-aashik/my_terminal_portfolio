@@ -85,7 +85,13 @@ export const Terminal: React.FC = () => {
 
   const scrollToBottom = () => {
     if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+      const { scrollTop, scrollHeight, clientHeight } = terminalRef.current;
+      const isNearBottom = scrollTop + clientHeight >= scrollHeight - 100; // 100px threshold
+
+      // Only auto-scroll if user is already near the bottom
+      if (isNearBottom) {
+        terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+      }
     }
   };
 
@@ -167,9 +173,10 @@ export const Terminal: React.FC = () => {
                   <Image
                     src="/assets/images/pic.jpeg"
                     alt="Profile Picture"
+                    draggable={false}
                     width={192}
                     height={192}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                     priority
                   />
                 </div>
@@ -585,7 +592,7 @@ export const Terminal: React.FC = () => {
                 className="mb-6"
               >
                 <div className="text-green-400 text-xl sm:text-2xl font-semibold mb-2 terminal-glow">
-                  Welcome to my Terminal Portfolio!
+                  Mohammed Aashik!
                 </div>
                 <div className="text-gray-300 mb-4 text-base sm:text-lg">
                   Type{" "}

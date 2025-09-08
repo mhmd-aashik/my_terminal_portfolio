@@ -317,7 +317,7 @@ export const contactInfo: ContactInfo = {
 };
 
 export const aboutText = `
-Welcome to my terminal portfolio! I'm Mohammed Aashik, a full-stack developer, desktop app developer, 
+Welcome to my ZSH Terminal portfolio! I'm Mohammed Aashik, a full-stack developer, desktop app developer, 
 and DevOps engineer with 6+ years of experience building scalable web and mobile applications.
 
 I specialize in modern frameworks like React, Next.js, NestJS, and Flutter, with strong expertise in 
