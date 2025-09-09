@@ -10,7 +10,7 @@ export const TerminalHeader: React.FC = () => {
         <div className="terminal-button terminal-button-yellow"></div>
         <div className="terminal-button terminal-button-green"></div>
       </div>
-      <div className="text-gray-400 text-sm font-mono">ZSH Terminal</div>
+      <div className="text-gray-400 text-sm font-mono"></div>
       <div className="w-16"></div> {/* Spacer for centering */}
     </div>
   );

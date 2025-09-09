@@ -117,7 +117,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
             className="mb-8"
           >
             <h1 className="text-2xl font-mono text-green-400 mb-2">
-              ZSH Terminal Portfolio
+              Mohammed Aashik
             </h1>
             <p className="text-gray-300 font-mono text-sm">
               {loadingText}

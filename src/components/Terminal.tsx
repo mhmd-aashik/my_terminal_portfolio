@@ -700,7 +700,15 @@ export const Terminal: React.FC = () => {
           </div>
         </div>
 
-        <TerminalFooter />
+        <TerminalFooter
+          onClear={() => {
+            setCommands([]);
+            setShowWelcome(true);
+            setIsTyping(false);
+            if (soundEnabled) playClickSound();
+          }}
+          soundEnabled={soundEnabled}
+        />
       </div>
 
       {/* AutoComplete Component */}
