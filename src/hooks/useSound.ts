@@ -104,6 +104,10 @@ export const useSound = () => {
     playBeep({ frequency: 800, duration: 60, volume: 0.05 });
   }, [playBeep]);
 
+  const playBackspaceSound = useCallback(() => {
+    playBeep({ frequency: 400, duration: 40, volume: 0.04, type: "square" });
+  }, [playBeep]);
+
   const playTypewriterBell = useCallback(() => {
     // No sound
   }, []);
@@ -118,5 +122,6 @@ export const useSound = () => {
     playErrorSound,
     playHoverSound,
     playClickSound,
+    playBackspaceSound,
   };
 };

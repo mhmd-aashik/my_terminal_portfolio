@@ -60,6 +60,7 @@ export const Terminal: React.FC = () => {
     playErrorSound,
     playHoverSound,
     playClickSound,
+    playBackspaceSound,
   } = useSound();
 
   useEffect(() => {
@@ -548,6 +549,9 @@ export const Terminal: React.FC = () => {
       if (soundEnabled) playClickSound();
     } else if (e.key === "Escape") {
       setShowAutoComplete(false);
+    } else if (e.key === "Backspace") {
+      // Backspace key
+      if (soundEnabled) playBackspaceSound();
     } else if (e.key.length === 1) {
       // Regular character input
       if (soundEnabled) playTypingSound();
